@@ -1,0 +1,10 @@
+C:\Documents and Settings\Ryohei Takasawa\Local Settings\Application Data\Temporary Projects\DominionShuffler\bin\Release\DominionShuffler.exe
+C:\Documents and Settings\Ryohei Takasawa\Local Settings\Application Data\Temporary Projects\DominionShuffler\bin\Release\DominionShuffler.pdb
+C:\Documents and Settings\Ryohei Takasawa\Local Settings\Application Data\Temporary Projects\DominionShuffler\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Ryohei Takasawa\Local Settings\Application Data\Temporary Projects\DominionShuffler\obj\x86\Release\DominionShuffler.exe
+C:\Documents and Settings\Ryohei Takasawa\Local Settings\Application Data\Temporary Projects\DominionShuffler\obj\x86\Release\DominionShuffler.pdb
+C:\Documents and Settings\Ryohei Takasawa\my documents\visual studio 2010\Projects\DominionShuffler\DominionShuffler\obj\x86\Release\DominionShuffler.exe
+C:\Documents and Settings\Ryohei Takasawa\my documents\visual studio 2010\Projects\DominionShuffler\DominionShuffler\obj\x86\Release\DominionShuffler.pdb
+C:\Documents and Settings\Ryohei Takasawa\my documents\visual studio 2010\Projects\DominionShuffler\DominionShuffler\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Ryohei Takasawa\my documents\visual studio 2010\Projects\DominionShuffler\DominionShuffler\bin\Release\DominionShuffler.exe
+C:\Documents and Settings\Ryohei Takasawa\my documents\visual studio 2010\Projects\DominionShuffler\DominionShuffler\bin\Release\DominionShuffler.pdb
