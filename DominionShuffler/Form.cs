@@ -31,17 +31,9 @@ namespace DominionShuffler
 
         public DominionForm()
         {
-            /*
-             *  フォームの設定
-             */
             Text = "DominionShuffler ver2.0";
             Size = new Size(480, 360);
             
-
-
-            /*
-             *  表示エリアの設定 
-             */
             checkBoxesArea = new GroupBox()
             {
                 Text = "使用するセット",
@@ -63,11 +55,6 @@ namespace DominionShuffler
                 Size = new Size(250, 290),
             };
 
-
-
-            /*
-             *  ボタンの設定
-             */
             shuffleButton = new Button()
             {
                 Text = "Shuffle",
@@ -77,10 +64,6 @@ namespace DominionShuffler
 
             shuffleButton.Click += new EventHandler(Shuffle_Click);
 
-
-            /*
-             *  チェックボックスの設定
-             */
             cbBasic = new CheckBox() 
             {
                 Text = "基本",
@@ -129,10 +112,6 @@ namespace DominionShuffler
                 Location = new Point(20, 20),
             };
 
-
-            /*
-             *  チェックボックスエリアにチェックボックスを追加 
-             */
             checkBoxesArea.Controls.Add(cbBasic);
             checkBoxesArea.Controls.Add(cbIntrigue);
             checkBoxesArea.Controls.Add(cbSeaside);
@@ -143,36 +122,12 @@ namespace DominionShuffler
 
             platinumRateArea.Controls.Add(cbPlatinum);
 
-
-
-            /*
-             *  終了時の処理の追加
-             */
-            this.FormClosing += new FormClosingEventHandler(DominionForm_FormClosing);
-
-
-            /*
-             *  フォームへの追加 
-             */
             this.Controls.Add(checkBoxesArea);
             this.Controls.Add(platinumRateArea);
             this.Controls.Add(useCardsArea);
             this.Controls.Add(shuffleButton);
         }
 
-
-        /*
-         *  終了時の処理
-         */
-        void DominionForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            MessageBox.Show("終了します", "確認");
-        }
-
-
-        /*
-         *  ボタン押下時の処理 
-         */
         void Shuffle_Click(object sender, EventArgs e) {
             int i = 0;
 

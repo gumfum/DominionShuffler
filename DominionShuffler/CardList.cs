@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/* 
- *  Singletonを利用したCardList 
- *
- *  @author Ryohei Takasawa
- */
-
 namespace DominionShuffler
 {
     class CardList
@@ -87,7 +81,6 @@ namespace DominionShuffler
             list.Add(new Card(48, 2, false, "秘密の部屋", VersionName.INTRIGUE));
             list.Add(new Card(49, 3, false, "貧民街", VersionName.INTRIGUE));
             list.Add(new Card(50, 5, false, "貢物", VersionName.INTRIGUE));
-
         }
 
         public void AddSeasideCards()

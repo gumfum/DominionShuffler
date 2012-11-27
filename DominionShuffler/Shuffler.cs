@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/*
- * 
- *  Singletonを利用したShuffler 
- * 
- */
-
 namespace DominionShuffler
 {
     class Shuffler
@@ -36,9 +30,6 @@ namespace DominionShuffler
 
         public List<string> shuffle(bool[] b)
         {
-            /*
-             *  初期化
-             */
             cardList.flush();
             useCards.Clear();
 
@@ -50,10 +41,6 @@ namespace DominionShuffler
             isYoungWitch = false;
             isPlatinum = true;
 
-
-            /*
-             *  セットチョイス & 植民地
-             */
             if (b[0])
                 cardList.AddBasicCards();
             if (b[1])
@@ -71,19 +58,11 @@ namespace DominionShuffler
             if (b[7])
                 isPlatinum = false;
 
-
-            /*
-             *  リストが空の場合 
-             */
             if (cardList.Length == 0) {
                 useCards.Add("セットを選んでね!!!");
                 return useCards;
             }
 
-
-            /*
-             *  カードチョイス
-             */
             for (int i = 0; i < 10; i++) {
                 useCardNumbers[i] = rand.Next(cardList.Length);
 
@@ -105,10 +84,6 @@ namespace DominionShuffler
                 useCards.Add(cardList.getCard(useCardNumbers[i]).getCardInfo());
             }
 
-
-            /*
-             *  災いカードチョイス 
-             */
             while (isYoungWitch) {
             choice:
                 hazardCardNumber = rand.Next(cardList.Length);
@@ -125,10 +100,6 @@ namespace DominionShuffler
                 isYoungWitch = false;
             }
 
-
-            /*
-             *  植民地チョイス 
-             */
             if(isPlatinum) {
                 if (rand.Next(100) < 20) {
                     isPlatinum = true;
