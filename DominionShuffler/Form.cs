@@ -5,10 +5,8 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DominionShuffler
-{
-    class DominionForm : Form
-    {
+namespace DominionShuffler {
+    class DominionForm : Form {
         Shuffler shuffler = Shuffler.getInstance();
         List<string> useCardsList = new List<string>();
         List<Label> useCardsLabels = new List<Label>();
@@ -29,34 +27,29 @@ namespace DominionShuffler
 
         CheckBox cbPlatinum;
 
-        public DominionForm()
-        {
+        public DominionForm() {
             Text = "DominionShuffler ver2.0";
             Size = new Size(480, 360);
             
-            checkBoxesArea = new GroupBox()
-            {
+            checkBoxesArea = new GroupBox() {
                 Text = "使用するセット",
                 Location = new Point(20, 20),
                 Size = new Size(150, 180)
             };
 
-            platinumRateArea = new GroupBox()
-            {
+            platinumRateArea = new GroupBox() {
                 Text = "白金、植民地",
                 Location = new Point(20, 215),
                 Size = new Size(150, 50)
             };
 
-            useCardsArea = new GroupBox()
-            {
+            useCardsArea = new GroupBox() {
                 Text = "使用するカード",
                 Location = new Point(200, 20),
                 Size = new Size(250, 290),
             };
 
-            shuffleButton = new Button()
-            {
+            shuffleButton = new Button() {
                 Text = "Shuffle",
                 Location = new Point(20, 280),
                 Size = new Size(150, 30),
@@ -64,50 +57,42 @@ namespace DominionShuffler
 
             shuffleButton.Click += new EventHandler(Shuffle_Click);
 
-            cbBasic = new CheckBox() 
-            {
+            cbBasic = new CheckBox() {
                 Text = "基本",
                 Location = new Point(20, 20),
             };
 
-            cbIntrigue = new CheckBox()
-            {
+            cbIntrigue = new CheckBox() {
                 Text = "陰謀",
                 Location = new Point(20, 40),
             };
 
-            cbSeaside = new CheckBox()
-            {
+            cbSeaside = new CheckBox() {
                 Text = "海辺",
                 Location = new Point(20, 60),
             };
 
-            cbProsperity = new CheckBox()
-            {
+            cbProsperity = new CheckBox() {
                 Text = "繁栄",
                 Location = new Point(20, 80),
             };
 
-            cbHervest = new CheckBox()
-            {
+            cbHervest = new CheckBox() {
                 Text = "収穫祭",
                 Location = new Point(20, 100),
             };
 
-            cbForeign = new CheckBox()
-            {
+            cbForeign = new CheckBox() {
                 Text = "異郷",
                 Location = new Point(20, 120),
             };
 
-            cbArchemy = new CheckBox()
-            {
+            cbArchemy = new CheckBox() {
                 Text = "錬金術",
                 Location = new Point(20, 140),
             };
 
-            cbPlatinum = new CheckBox()
-            {
+            cbPlatinum = new CheckBox() {
                 Text = "使用しない",
                 Location = new Point(20, 20),
             };
@@ -157,7 +142,6 @@ namespace DominionShuffler
 
                 useCardsArea.Controls.Add(label);
             }
-
         }
     }
 }

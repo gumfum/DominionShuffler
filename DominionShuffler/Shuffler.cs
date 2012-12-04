@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DominionShuffler
-{
-    class Shuffler
-    {
+namespace DominionShuffler {
+    class Shuffler {
         private static Shuffler shuffler = new Shuffler();
         private CardList cardList = CardList.getInstance();
 
@@ -18,23 +16,19 @@ namespace DominionShuffler
 
         Random rand = new Random();
 
-        private Shuffler()
-        {
+        private Shuffler() {
 
         }
 
-        public static Shuffler getInstance()
-        {
+        public static Shuffler getInstance() {
             return shuffler;
         }
 
-        public List<string> shuffle(bool[] b)
-        {
+        public List<string> shuffle(bool[] b) {
             cardList.flush();
             useCards.Clear();
 
-            for (int i = 0; i < 10; i++)
-            {
+            for (int i = 0; i < 10; i++) {
                 useCardNumbers[i] = 0;
             }
 

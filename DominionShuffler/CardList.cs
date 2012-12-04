@@ -3,26 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DominionShuffler
-{
-    class CardList
-    {
+namespace DominionShuffler {
+    class CardList {
         List<Card> list = new List<Card>();
 
         private static CardList cardList = new CardList();
 
-        private CardList()
-        {
+        private CardList() {
             
         }
 
-        public static CardList getInstance()
-        {
+        public static CardList getInstance() {
             return cardList;
         }
 
-        public int Length
-        {
+        public int Length {
             get { return list.Count; }
         }
     
@@ -54,8 +49,7 @@ namespace DominionShuffler
             list.Add(new Card(25, 2, false, "礼拝堂", VersionName.BASIC));
         }
 
-        public void AddIntrigueCards()
-        {
+        public void AddIntrigueCards() {
             list.Add(new Card(26, 3, false, "大広間", VersionName.INTRIGUE));
             list.Add(new Card(27, 5, false, "改良", VersionName.INTRIGUE));
             list.Add(new Card(28, 3, false, "仮面舞踏会", VersionName.INTRIGUE));
@@ -83,8 +77,7 @@ namespace DominionShuffler
             list.Add(new Card(50, 5, false, "貢物", VersionName.INTRIGUE));
         }
 
-        public void AddSeasideCards()
-        {
+        public void AddSeasideCards() {
             list.Add(new Card(51, 4, false, "海の妖婆", VersionName.SEASIDE));
             list.Add(new Card(52, 4, false, "海賊船", VersionName.SEASIDE));
             list.Add(new Card(53, 3, false, "漁村", VersionName.SEASIDE));
@@ -113,8 +106,7 @@ namespace DominionShuffler
             list.Add(new Card(76, 2, false, "抑留", VersionName.SEASIDE));
         }
 
-        public void AddProsperityCards()
-        {
+        public void AddProsperityCards() {
             list.Add(new Card(77, 4, false, "石切り場", VersionName.PROSPERITY));
             list.Add(new Card(78, 6, false, "大市場", VersionName.PROSPERITY));
             list.Add(new Card(79, 5, false, "会計所", VersionName.PROSPERITY));
@@ -142,8 +134,7 @@ namespace DominionShuffler
             list.Add(new Card(101, 4, false, "労働者の村", VersionName.PROSPERITY));
         }
 
-        public void AddHarvestCards()
-        {
+        public void AddHarvestCards() {
             list.Add(new Card(102, 3, false, "移動動物園", VersionName.HARVEST));
             list.Add(new Card(103, 4, false, "馬商人", VersionName.HARVEST));
             list.Add(new Card(104, 3, false, "占い師", VersionName.HARVEST));
@@ -159,8 +150,7 @@ namespace DominionShuffler
             list.Add(new Card(114, 4, false, "魔女娘", VersionName.HARVEST));
         }
 
-        public void AddForeignCards()
-        {
+        public void AddForeignCards() {
             list.Add(new Card(115, 3, false, "オアシス", VersionName.FOREIGN));
             list.Add(new Card(116, 5, false, "街道", VersionName.FOREIGN));
             list.Add(new Card(117, 3, false, "開発", VersionName.FOREIGN));
@@ -189,8 +179,7 @@ namespace DominionShuffler
             list.Add(new Card(140, 4, false, "よろずや", VersionName.FOREIGN));
         }
 
-        public void AddArchemyCards()
-        {
+        public void AddArchemyCards() {
             list.Add(new Card(141, 2, true, "薬師", VersionName.ARCHEMY));
             list.Add(new Card(142, 3, true, "賢者の石", VersionName.ARCHEMY));
             list.Add(new Card(143, 4, true, "ゴーレム", VersionName.ARCHEMY));
@@ -205,13 +194,11 @@ namespace DominionShuffler
             list.Add(new Card(152, 3, true, "錬金術師", VersionName.ARCHEMY));
         }
 
-        public Card getCard(int num)
-        {
+        public Card getCard(int num) {
             return list[num];
         }
 
-        public void flush()
-        {
+        public void flush() {
             list.Clear();
         }
     }
