@@ -11,85 +11,82 @@ namespace DominionShuffler {
         List<string> useCardsList = new List<string>();
         List<Label> useCardsLabels = new List<Label>();
 
-        GroupBox checkBoxesArea;
-        GroupBox platinumRateArea;
-        GroupBox useCardsArea;
-
-        Button shuffleButton;
-
-        CheckBox cbBasic;
-        CheckBox cbIntrigue;
-        CheckBox cbSeaside;
-        CheckBox cbProsperity;
-        CheckBox cbHervest;
-        CheckBox cbForeign;
-        CheckBox cbArchemy;
+        GroupBox gbSets, gbOptions, gbCards;
+        
+        CheckBox cbBas, cbInt, cbSea, cbPro, cbHer, cbFor, cbArc, cbBla;
 
         CheckBox cbPlatinum;
+
+        Button btShuffle;
 
         public DominionForm() {
             Text = "DominionShuffler ver2.0";
             Size = new Size(480, 360);
             
-            checkBoxesArea = new GroupBox() {
+            gbSets = new GroupBox() {
                 Text = "使用するセット",
                 Location = new Point(20, 20),
                 Size = new Size(150, 180)
             };
 
-            platinumRateArea = new GroupBox() {
-                Text = "白金、植民地",
+            gbOptions = new GroupBox() {
+                Text = "オプション",
                 Location = new Point(20, 215),
                 Size = new Size(150, 50)
             };
 
-            useCardsArea = new GroupBox() {
+            gbCards = new GroupBox() {
                 Text = "使用するカード",
                 Location = new Point(200, 20),
                 Size = new Size(250, 290),
             };
 
-            shuffleButton = new Button() {
+            btShuffle = new Button() {
                 Text = "Shuffle",
                 Location = new Point(20, 280),
                 Size = new Size(150, 30),
             };
 
-            shuffleButton.Click += new EventHandler(Shuffle_Click);
+            btShuffle.Click += new EventHandler(ShuffleClick);
 
-            cbBasic = new CheckBox() {
+            cbBas = new CheckBox() {
                 Text = "基本",
                 Location = new Point(20, 20),
             };
 
-            cbIntrigue = new CheckBox() {
+            cbInt = new CheckBox() {
                 Text = "陰謀",
                 Location = new Point(20, 40),
             };
 
-            cbSeaside = new CheckBox() {
+            cbSea = new CheckBox() {
                 Text = "海辺",
                 Location = new Point(20, 60),
             };
 
-            cbProsperity = new CheckBox() {
+            cbPro = new CheckBox() {
                 Text = "繁栄",
                 Location = new Point(20, 80),
             };
 
-            cbHervest = new CheckBox() {
+            cbHer = new CheckBox() {
                 Text = "収穫祭",
                 Location = new Point(20, 100),
             };
 
-            cbForeign = new CheckBox() {
+            cbFor = new CheckBox() {
                 Text = "異郷",
                 Location = new Point(20, 120),
             };
 
-            cbArchemy = new CheckBox() {
+            cbArc = new CheckBox() {
                 Text = "錬金術",
                 Location = new Point(20, 140),
+            };
+
+            cbBla = new CheckBox() {
+                Text = "暗黒時代",
+                Location = new Point(20, 160),
             };
 
             cbPlatinum = new CheckBox() {
@@ -97,38 +94,38 @@ namespace DominionShuffler {
                 Location = new Point(20, 20),
             };
 
-            checkBoxesArea.Controls.Add(cbBasic);
-            checkBoxesArea.Controls.Add(cbIntrigue);
-            checkBoxesArea.Controls.Add(cbSeaside);
-            checkBoxesArea.Controls.Add(cbProsperity);
-            checkBoxesArea.Controls.Add(cbHervest);
-            checkBoxesArea.Controls.Add(cbForeign);
-            checkBoxesArea.Controls.Add(cbArchemy);
+            gbSets.Controls.Add(cbBas);
+            gbSets.Controls.Add(cbInt);
+            gbSets.Controls.Add(cbSea);
+            gbSets.Controls.Add(cbPro);
+            gbSets.Controls.Add(cbHer);
+            gbSets.Controls.Add(cbFor);
+            gbSets.Controls.Add(cbArc);
 
-            platinumRateArea.Controls.Add(cbPlatinum);
+            gbOptions.Controls.Add(cbPlatinum);
 
-            this.Controls.Add(checkBoxesArea);
-            this.Controls.Add(platinumRateArea);
-            this.Controls.Add(useCardsArea);
-            this.Controls.Add(shuffleButton);
+            this.Controls.Add(gbSets);
+            this.Controls.Add(gbOptions);
+            this.Controls.Add(gbCards);
+            this.Controls.Add(btShuffle);
         }
 
-        void Shuffle_Click(object sender, EventArgs e) {
+        void ShuffleClick(object sender, EventArgs e) {
             int i = 0;
 
             useCardsList.Clear();
             useCardsLabels.Clear();
-            useCardsArea.Controls.Clear();
+            gbCards.Controls.Clear();
             
             bool[] isSelectedSet = new bool[8];
 
-            isSelectedSet[0] = cbBasic.Checked;
-            isSelectedSet[1] = cbIntrigue.Checked;
-            isSelectedSet[2] = cbSeaside.Checked;
-            isSelectedSet[3] = cbProsperity.Checked;
-            isSelectedSet[4] = cbHervest.Checked;
-            isSelectedSet[5] = cbForeign.Checked;
-            isSelectedSet[6] = cbArchemy.Checked;
+            isSelectedSet[0] = cbBas.Checked;
+            isSelectedSet[1] = cbInt.Checked;
+            isSelectedSet[2] = cbSea.Checked;
+            isSelectedSet[3] = cbPro.Checked;
+            isSelectedSet[4] = cbHer.Checked;
+            isSelectedSet[5] = cbFor.Checked;
+            isSelectedSet[6] = cbArc.Checked;
             isSelectedSet[7] = cbPlatinum.Checked;
 
             useCardsList = shuffler.shuffle(isSelectedSet);
@@ -140,7 +137,7 @@ namespace DominionShuffler {
                 label.Size = new Size(200, 16);
                 ++i;
 
-                useCardsArea.Controls.Add(label);
+                gbCards.Controls.Add(label);
             }
         }
     }

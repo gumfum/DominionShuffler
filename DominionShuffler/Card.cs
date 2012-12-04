@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DominionShuffler 
-{
+namespace DominionShuffler {
     enum VersionName {
-        BASIC, INTRIGUE, SEASIDE, PROSPERITY, HARVEST, ARCHEMY, FOREIGN
+        BAS, INT, SEA, PRO, HAR, FOR, ALC, BLA
     }
 
     class Card {
@@ -51,20 +50,22 @@ namespace DominionShuffler
 
         private string getVersionName() {
             switch (Version) {
-                case VersionName.BASIC:
+                case VersionName.BAS:
                     return "基本";
-                case VersionName.INTRIGUE:
+                case VersionName.INT:
                     return "陰謀";
-                case VersionName.SEASIDE:
+                case VersionName.SEA:
                     return "海辺";
-                case VersionName.PROSPERITY:
+                case VersionName.PRO:
                     return "繁栄";
-                case VersionName.HARVEST:
+                case VersionName.HAR:
                     return "収穫";
-                case VersionName.FOREIGN:
+                case VersionName.FOR:
                     return "異郷";
-                case VersionName.ARCHEMY:
+                case VersionName.ALC:
                     return "錬金";
+                case VersionName.BLA:
+                    return "暗黒";
                 default:
                     return "おっと、プログラムのミスだね^^";
             }
