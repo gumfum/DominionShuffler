@@ -192,6 +192,44 @@ namespace DominionShuffler {
             _list.Add(new Card(152, 3, true, "錬金術師", VersionName.Alc));
         }
 
+        public void AddBrackageCards() {
+            _list.Add(new Card(153, 3, false, "青空市場", VersionName.Bla));
+            _list.Add(new Card(154, 3, false, "隠遁者", VersionName.Bla));
+            _list.Add(new Card(155, 4, false, "金物商", VersionName.Bla));
+            _list.Add(new Card(156, 6, false, "狩場", VersionName.Bla));
+            _list.Add(new Card(157, 5, false, "騎士", VersionName.Bla));
+            _list.Add(new Card(158, 5, false, "偽造通貨", VersionName.Bla));
+            _list.Add(new Card(159, 1, false, "救貧院", VersionName.Bla));
+            _list.Add(new Card(160, 5, false, "狂信者", VersionName.Bla));
+            _list.Add(new Card(161, 4, false, "吟遊詩人", VersionName.Bla));
+            _list.Add(new Card(162, 5, false, "屑屋", VersionName.Bla));
+            _list.Add(new Card(163, 3, false, "賢者", VersionName.Bla));
+            _list.Add(new Card(164, 4, false, "行進", VersionName.Bla));
+            _list.Add(new Card(165, 4, false, "ゴミあさり", VersionName.Bla));
+            _list.Add(new Card(166, 3, false, "採集者", VersionName.Bla));
+            _list.Add(new Card(167, 6, false, "祭壇", VersionName.Bla));
+            _list.Add(new Card(168, 5, false, "山賊の宿営地", VersionName.Bla));
+            _list.Add(new Card(169, 4, false, "死の荷車", VersionName.Bla));
+            _list.Add(new Card(170, 4, false, "襲撃者", VersionName.Bla));
+            _list.Add(new Card(171, 2, false, "従者", VersionName.Bla));
+            _list.Add(new Card(172, 4, false, "城塞", VersionName.Bla));
+            _list.Add(new Card(173, 5, false, "建て直し", VersionName.Bla));
+            _list.Add(new Card(174, 5, false, "地下墓所", VersionName.Bla));
+            _list.Add(new Card(175, 5, false, "盗賊", VersionName.Bla));
+            _list.Add(new Card(176, 4, false, "ネズミ", VersionName.Bla));
+            _list.Add(new Card(177, 5, false, "墓暴き", VersionName.Bla));
+            _list.Add(new Card(178, 5, false, "伯爵", VersionName.Bla));
+            _list.Add(new Card(179, 5, false, "はみだし者", VersionName.Bla));
+            _list.Add(new Card(180, 5, false, "秘術者", VersionName.Bla));
+            _list.Add(new Card(181, 4, false, "武器庫", VersionName.Bla));
+            _list.Add(new Card(182, 3, false, "浮浪児", VersionName.Bla));
+            _list.Add(new Card(183, 2, false, "浮浪者", VersionName.Bla));
+            _list.Add(new Card(184, 4, false, "封土", VersionName.Bla));
+            _list.Add(new Card(185, 3, false, "物置", VersionName.Bla));
+            _list.Add(new Card(186, 2, false, "物乞い", VersionName.Bla));
+            _list.Add(new Card(187, 5, false, "略奪", VersionName.Bla));
+        }
+
         public Card GetCard(int num) {
             return _list[num];
         }

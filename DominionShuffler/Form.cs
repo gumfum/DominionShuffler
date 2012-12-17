@@ -138,7 +138,7 @@ namespace DominionShuffler {
             isSelectedSet[4] = _cbHer.Checked;
             isSelectedSet[5] = _cbFor.Checked;
             isSelectedSet[6] = _cbArc.Checked;
-            isSelectedSet[7] = _cbPlatinum.Checked;
+            isSelectedSet[7] = _cbBla.Checked;
 
             _useCardsList = _shuffler.Shuffle(isSelectedSet);
 

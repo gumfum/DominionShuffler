@@ -48,7 +48,7 @@ namespace DominionShuffler {
             if (b[6])
                 _cardList.AddArchemyCards();
             if (b[7])
-                _isPlatinum = false;
+                _cardList.AddBrackageCards();
 
             if (_cardList.Length == 0) {
                 _useCards.Add("セットを選んでね!!!");
