@@ -1,143 +1,156 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace DominionShuffler {
     class DominionForm : Form {
-        Shuffler shuffler = Shuffler.getInstance();
-        List<string> useCardsList = new List<string>();
-        List<Label> useCardsLabels = new List<Label>();
+        readonly Shuffler _shuffler;
+        List<string> _useCardsList = new List<string>();
 
-        GroupBox gbSets, gbOptions, gbCards;
-        
-        CheckBox cbBas, cbInt, cbSea, cbPro, cbHer, cbFor, cbArc, cbBla;
+        readonly GroupBox _gbSets;
+        readonly GroupBox _gbOptions;
+        readonly GroupBox _gbCards;
 
-        CheckBox cbPlatinum;
+        readonly CheckBox _cbBas;
+        readonly CheckBox _cbInt;
+        readonly CheckBox _cbSea;
+        readonly CheckBox _cbPro;
+        readonly CheckBox _cbHer;
+        readonly CheckBox _cbFor;
+        readonly CheckBox _cbArc;
+        readonly CheckBox _cbBla;
 
-        Button btShuffle;
+        readonly CheckBox _cbPlatinum;
+
+        readonly Button _btShuffle;
 
         public DominionForm() {
+            _shuffler = Shuffler.GetInstance();
             Text = "DominionShuffler ver2.0";
             Size = new Size(480, 360);
             
-            gbSets = new GroupBox() {
-                Text = "使用するセット",
+            _gbSets = new GroupBox {
+                Text = "使用するセット",    
                 Location = new Point(20, 20),
-                Size = new Size(150, 180)
+                Size = new Size(150, 185),    
             };
 
-            gbOptions = new GroupBox() {
+            _gbOptions = new GroupBox {
                 Text = "オプション",
                 Location = new Point(20, 215),
                 Size = new Size(150, 50)
             };
 
-            gbCards = new GroupBox() {
+            _gbCards = new GroupBox {
                 Text = "使用するカード",
                 Location = new Point(200, 20),
                 Size = new Size(250, 290),
             };
 
-            btShuffle = new Button() {
+            _btShuffle = new Button {
                 Text = "Shuffle",
                 Location = new Point(20, 280),
                 Size = new Size(150, 30),
             };
 
-            btShuffle.Click += new EventHandler(ShuffleClick);
+            _btShuffle.Click += ShuffleClick;
 
-            cbBas = new CheckBox() {
+            _cbBas = new CheckBox {
                 Text = "基本",
-                Location = new Point(20, 20),
+                Location = new Point(20, 15),
             };
 
-            cbInt = new CheckBox() {
+            _cbInt = new CheckBox {
                 Text = "陰謀",
-                Location = new Point(20, 40),
+                Location = new Point(20, 35),
             };
 
-            cbSea = new CheckBox() {
+            _cbSea = new CheckBox {
                 Text = "海辺",
-                Location = new Point(20, 60),
+                Location = new Point(20, 55),
             };
 
-            cbPro = new CheckBox() {
+            _cbPro = new CheckBox {
                 Text = "繁栄",
-                Location = new Point(20, 80),
+                Location = new Point(20, 75),
             };
 
-            cbHer = new CheckBox() {
+            _cbHer = new CheckBox {
                 Text = "収穫祭",
-                Location = new Point(20, 100),
+                Location = new Point(20, 95),
             };
 
-            cbFor = new CheckBox() {
+            _cbFor = new CheckBox {
                 Text = "異郷",
-                Location = new Point(20, 120),
+                Location = new Point(20, 115),
             };
 
-            cbArc = new CheckBox() {
+            _cbArc = new CheckBox {
                 Text = "錬金術",
-                Location = new Point(20, 140),
+                Location = new Point(20, 135),
             };
 
-            cbBla = new CheckBox() {
+            _cbBla = new CheckBox {
                 Text = "暗黒時代",
-                Location = new Point(20, 160),
+                Location = new Point(20, 155),
             };
 
-            cbPlatinum = new CheckBox() {
+            _cbPlatinum = new CheckBox {
                 Text = "使用しない",
                 Location = new Point(20, 20),
             };
 
-            gbSets.Controls.Add(cbBas);
-            gbSets.Controls.Add(cbInt);
-            gbSets.Controls.Add(cbSea);
-            gbSets.Controls.Add(cbPro);
-            gbSets.Controls.Add(cbHer);
-            gbSets.Controls.Add(cbFor);
-            gbSets.Controls.Add(cbArc);
+            _gbSets.Controls.Add(_cbBas);
+            _gbSets.Controls.Add(_cbInt);
+            _gbSets.Controls.Add(_cbSea);
+            _gbSets.Controls.Add(_cbPro);
+            _gbSets.Controls.Add(_cbHer);
+            _gbSets.Controls.Add(_cbFor);
+            _gbSets.Controls.Add(_cbArc);
+            _gbSets.Controls.Add(_cbBla);
 
-            gbOptions.Controls.Add(cbPlatinum);
+            _gbOptions.Controls.Add(_cbPlatinum);
 
-            this.Controls.Add(gbSets);
-            this.Controls.Add(gbOptions);
-            this.Controls.Add(gbCards);
-            this.Controls.Add(btShuffle);
+            Controls.Add(_gbSets);
+            Controls.Add(_gbOptions);
+            Controls.Add(_gbCards);
+            Controls.Add(_btShuffle);
+        }
+
+        public override sealed string Text {
+            get { return base.Text; }
+            set { base.Text = value; }
         }
 
         void ShuffleClick(object sender, EventArgs e) {
-            int i = 0;
+            var i = 0;
 
-            useCardsList.Clear();
-            useCardsLabels.Clear();
-            gbCards.Controls.Clear();
+            _useCardsList.Clear();
+            _gbCards.Controls.Clear();
             
-            bool[] isSelectedSet = new bool[8];
+            var isSelectedSet = new bool[8];
 
-            isSelectedSet[0] = cbBas.Checked;
-            isSelectedSet[1] = cbInt.Checked;
-            isSelectedSet[2] = cbSea.Checked;
-            isSelectedSet[3] = cbPro.Checked;
-            isSelectedSet[4] = cbHer.Checked;
-            isSelectedSet[5] = cbFor.Checked;
-            isSelectedSet[6] = cbArc.Checked;
-            isSelectedSet[7] = cbPlatinum.Checked;
+            isSelectedSet[0] = _cbBas.Checked;
+            isSelectedSet[1] = _cbInt.Checked;
+            isSelectedSet[2] = _cbSea.Checked;
+            isSelectedSet[3] = _cbPro.Checked;
+            isSelectedSet[4] = _cbHer.Checked;
+            isSelectedSet[5] = _cbFor.Checked;
+            isSelectedSet[6] = _cbArc.Checked;
+            isSelectedSet[7] = _cbPlatinum.Checked;
 
-            useCardsList = shuffler.shuffle(isSelectedSet);
+            _useCardsList = _shuffler.Shuffle(isSelectedSet);
 
-            foreach (string str in useCardsList) {
-                Label label = new Label();
-                label.Text = str;
-                label.Location= new Point(20, 5 + 16 * (i + 1));
-                label.Size = new Size(200, 16);
+            foreach (var str in _useCardsList) {
+                var label = new Label {
+                    Text = str,
+                    Location = new Point(20, 5 + 16 * (i + 1)),
+                    Size = new Size(200, 16)
+                };
                 ++i;
 
-                gbCards.Controls.Add(label);
+                _gbCards.Controls.Add(label);
             }
         }
     }

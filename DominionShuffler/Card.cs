@@ -1,44 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace DominionShuffler {
     enum VersionName {
-        BAS, INT, SEA, PRO, HAR, FOR, ALC, BLA
+        Bas, Int, Sea, Pro, Har, For, Alc, Bla
     }
 
     class Card {
-        int pri_number;
-        int pri_cost;
-        bool pri_portion;
-        string pri_name;
-        VersionName pri_version;
+        public int Number { get; set; }
 
-        public int Number {
-            get { return pri_number; }
-            set { pri_number = value; }
-        }
+        public int Cost { get; set; }
 
-        public int Cost {
-            get { return pri_cost; }
-            set { pri_cost = value; }
-        }
+        public bool Portion { get; set; }
 
-        public bool Portion {
-            get { return pri_portion; }
-            set { pri_portion = value; }
-        }
+        public string Name { get; set; }
 
-        public string Name {
-            get { return pri_name; }
-            set { pri_name = value; }
-        }
-
-        public VersionName Version {
-            get { return pri_version; }
-            set { pri_version = value; }
-        }
+        public VersionName Version { get; set; }
 
         public Card(int number, int cost, bool portion, string name, VersionName version) {
             Number = number;
@@ -48,31 +24,31 @@ namespace DominionShuffler {
             Version = version;
         }
 
-        private string getVersionName() {
+        private string GetVersionName() {
             switch (Version) {
-                case VersionName.BAS:
+                case VersionName.Bas:
                     return "基本";
-                case VersionName.INT:
+                case VersionName.Int:
                     return "陰謀";
-                case VersionName.SEA:
+                case VersionName.Sea:
                     return "海辺";
-                case VersionName.PRO:
+                case VersionName.Pro:
                     return "繁栄";
-                case VersionName.HAR:
+                case VersionName.Har:
                     return "収穫";
-                case VersionName.FOR:
+                case VersionName.For:
                     return "異郷";
-                case VersionName.ALC:
+                case VersionName.Alc:
                     return "錬金";
-                case VersionName.BLA:
+                case VersionName.Bla:
                     return "暗黒";
                 default:
                     return "おっと、プログラムのミスだね^^";
             }
         }
 
-        public string getCardInfo() {
-            return String.Format("{0:D3} - {1} - {2}", Number, getVersionName(), Name);
+        public string GetCardInfo() {
+            return String.Format("{0:D3} - {1} - {2}", Number, GetVersionName(), Name);
         }
     }
 }
