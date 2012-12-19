@@ -55,10 +55,10 @@ namespace DominionShuffler {
                 return _useCards;
             }
 
-            for (int i = 0; i < 10; i++) {
+            for (var i = 0; i < 10; i++) {
                 _useCardNumbers[i] = _rand.Next(_cardList.Length);
 
-                for (int j = 0; j < i; j++) {
+                for (var j = 0; j < i; j++) {
                     if (_useCardNumbers[i] == _useCardNumbers[j]) {
                         --i;
                         break;
@@ -72,37 +72,44 @@ namespace DominionShuffler {
 
             Array.Sort(_useCardNumbers);
 
-            for (int i = 0; i < 10; i++) {
+            for (var i = 0; i < 10; i++) {
                 _useCards.Add(_cardList.GetCard(_useCardNumbers[i]).GetCardInfo());
             }
 
             while (_isYoungWitch) {
-            choice:
-                _hazardCardNumber = _rand.Next(_cardList.Length);
-
-                for (int i = 0; i < 10; i++) {
-                    if (_useCardNumbers[i] == _hazardCardNumber || _cardList.GetCard(_hazardCardNumber).Cost > 3 || _cardList.GetCard(_hazardCardNumber).Portion) {
-                        goto choice;
-                    }
-                }
-
-                _useCards.Add("");
-                _useCards.Add(_cardList.GetCard(_hazardCardNumber).GetCardInfo());
-
+                SelectHarardCard();
                 _isYoungWitch = false;
             }
 
             if(_isPlatinum) {
                 if (_rand.Next(100) < 20) {
                     _isPlatinum = true;
-
-                    _useCards.Add("");
-                    _useCards.Add("*** - 繁栄 - 白金");
-                    _useCards.Add("*** - 繁栄 - 植民地");
+                    SetProsperityEnvironment();
                 }
             }
 
             return _useCards;
+        }
+
+        private bool SelectHarardCard() {
+        choice:
+            _hazardCardNumber = _rand.Next(_cardList.Length);
+
+            for(var i = 0; i < 10; i++) {
+                if(_useCardNumbers[i] == _hazardCardNumber || _cardList.GetCard(_hazardCardNumber).Cost > 3 || _cardList.GetCard(_hazardCardNumber).Portion) {
+                    goto choice;
+                }
+            }
+
+            _useCards.Add("");
+            _useCards.Add(_cardList.GetCard(_hazardCardNumber).GetCardInfo());
+            return true;
+        }
+
+        private void SetProsperityEnvironment() {
+            _useCards.Add("");
+            _useCards.Add("*** - 繁栄 - 白金");
+            _useCards.Add("*** - 繁栄 - 植民地");            
         }
     }
 }
