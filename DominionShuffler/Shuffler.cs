@@ -6,13 +6,16 @@ namespace DominionShuffler {
         private static readonly Shuffler shuffler = new Shuffler();
         private readonly CardList _cardList = CardList.GetInstance();
 
-        private readonly List<string> _useCards = new List<string>();
-        private readonly int[] _useCardNumbers = new int[10];
+        readonly List<string> _useCards = new List<string>();
+        readonly List<string> _useExCards = new List<string>(); 
 
-        bool _isYoungWitch, _isPlatinum;
+        private int[] _useCardNumbers = new int[10];
+
         int _hazardCardNumber;
 
         readonly Random _rand = new Random();
+        private bool _isProsperityEnvironment;
+        private bool _isBlackAgeEnvironment;
 
         private Shuffler() {
 
@@ -22,16 +25,17 @@ namespace DominionShuffler {
             return shuffler;
         }
 
-        public List<string> Shuffle(bool[] b) {
+        public List<string> GetCards(bool[] b) {
             _cardList.Flush();
             _useCards.Clear();
+            _useExCards.Clear();
+
+            _isProsperityEnvironment = false;
+            _isBlackAgeEnvironment = false;
 
             for (var i = 0; i < 10; i++) {
                 _useCardNumbers[i] = 0;
             }
-
-            _isYoungWitch = false;
-            _isPlatinum = true;
 
             if (b[0])
                 _cardList.AddBasicCards();
@@ -64,35 +68,65 @@ namespace DominionShuffler {
                         break;
                     }
                 }
-
-                if (_cardList.GetCard(_useCardNumbers[i]).Name == "魔女娘") {
-                    _isYoungWitch = true;
-                }
             }
 
+            var v = _cardList.GetCard(_useCardNumbers[9]).Version;
+            if (v == VersionName.Pro) {
+                _isProsperityEnvironment = true;
+            }
+            if (v == VersionName.Bla) {
+                _isBlackAgeEnvironment = true;
+            }
+            
             Array.Sort(_useCardNumbers);
 
             for (var i = 0; i < 10; i++) {
                 _useCards.Add(_cardList.GetCard(_useCardNumbers[i]).GetCardInfo());
             }
 
-            while (_isYoungWitch) {
-                SelectHarardCard();
-                _isYoungWitch = false;
-            }
-
-            if(_isPlatinum) {
-                if (_rand.Next(100) < 20) {
-                    _isPlatinum = true;
-                    SetProsperityEnvironment();
-                }
-            }
-
             return _useCards;
         }
 
+        public List<string> GetExCards() {
+            if(_isProsperityEnvironment) {
+                SetProsperityEnvironment();
+            }
+
+            if(_isBlackAgeEnvironment) {
+                SetBlackAgeEnvironment();
+            }
+            
+            for (var i = 0; i < 10; i++) {
+                var name = _cardList.GetCard(_useCardNumbers[i]).Name;
+                switch (name) {
+                case "魔女娘":
+                    SelectHarardCard();
+                    break;
+                case "隠遁者":
+                    SetMadmanToEnvironment();
+                    break;
+                case "浮浪児":
+                    SetMercenaryToEnvironment();
+                    break;
+                case "山賊の宿営地":
+                case "略奪":
+                    SetPillageToEnvironment();
+                    break;
+                case "死の荷車":
+                    SetRuinsToEnvironment();
+                    break;
+                case "襲撃者":
+                    SetPillageToEnvironment();
+                    SetRuinsToEnvironment();
+                    break;
+                }
+            }
+
+            return _useExCards;
+        }
+
         private bool SelectHarardCard() {
-        choice:
+choice:
             _hazardCardNumber = _rand.Next(_cardList.Length);
 
             for(var i = 0; i < 10; i++) {
@@ -101,15 +135,33 @@ namespace DominionShuffler {
                 }
             }
 
-            _useCards.Add("");
-            _useCards.Add(_cardList.GetCard(_hazardCardNumber).GetCardInfo());
+            _useExCards.Add(_cardList.GetCard(_hazardCardNumber).GetCardInfo());
             return true;
         }
 
         private void SetProsperityEnvironment() {
-            _useCards.Add("");
-            _useCards.Add("*** - 繁栄 - 白金");
-            _useCards.Add("*** - 繁栄 - 植民地");            
+            _useExCards.Add("*** - 繁栄 - 白金");
+            _useExCards.Add("*** - 繁栄 - 植民地");
+        }
+
+        private void SetBlackAgeEnvironment() {
+            _useExCards.Add("*** - 暗黒 - 避難所");
+        }
+
+        private void SetRuinsToEnvironment() {
+            _useExCards.Add("*** - 暗黒 - 廃墟");
+        }
+
+        private void SetPillageToEnvironment() {
+            _useExCards.Add("*** - 暗黒 - 略奪品");
+        }
+
+        private void SetMadmanToEnvironment() {
+            _useExCards.Add("*** - 暗黒 - 狂人");
+        }
+
+        private void SetMercenaryToEnvironment() {
+            _useExCards.Add("*** - 暗黒 - 傭兵");
         }
     }
 }

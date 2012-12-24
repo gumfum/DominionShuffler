@@ -6,11 +6,14 @@ using System.Windows.Forms;
 namespace DominionShuffler {
     class DominionForm : Form {
         readonly Shuffler _shuffler;
+        
         List<string> _useCardsList = new List<string>();
+        List<string> _useExCardsList = new List<string>();
 
         readonly GroupBox _gbSets;
         readonly GroupBox _gbOptions;
         readonly GroupBox _gbCards;
+        readonly GroupBox _gbExCards;
 
         readonly CheckBox _cbBas;
         readonly CheckBox _cbInt;
@@ -28,7 +31,7 @@ namespace DominionShuffler {
         public DominionForm() {
             _shuffler = Shuffler.GetInstance();
             Text = "DominionShuffler ver2.0";
-            Size = new Size(480, 360);
+            Size = new Size(480, 400);
             
             _gbSets = new GroupBox {
                 Text = "使用するセット",    
@@ -45,11 +48,17 @@ namespace DominionShuffler {
             _gbCards = new GroupBox {
                 Text = "使用するカード",
                 Location = new Point(200, 20),
-                Size = new Size(250, 290),
+                Size = new Size(250, 185),
+            };
+
+            _gbExCards = new GroupBox {
+                    Text = "追加するカード",
+                    Location = new Point(200, 215),
+                    Size = new Size(250, 135),
             };
 
             _btShuffle = new Button {
-                Text = "Shuffle",
+                Text = "GO!",
                 Location = new Point(20, 280),
                 Size = new Size(150, 30),
             };
@@ -115,6 +124,7 @@ namespace DominionShuffler {
             Controls.Add(_gbSets);
             Controls.Add(_gbOptions);
             Controls.Add(_gbCards);
+            Controls.Add(_gbExCards);
             Controls.Add(_btShuffle);
         }
 
@@ -128,6 +138,7 @@ namespace DominionShuffler {
 
             _useCardsList.Clear();
             _gbCards.Controls.Clear();
+            _gbExCards.Controls.Clear();
             
             var isSelectedSet = new bool[8];
 
@@ -140,17 +151,29 @@ namespace DominionShuffler {
             isSelectedSet[6] = _cbArc.Checked;
             isSelectedSet[7] = _cbBla.Checked;
 
-            _useCardsList = _shuffler.Shuffle(isSelectedSet);
+            _useCardsList = _shuffler.GetCards(isSelectedSet);
+            _useExCardsList = _shuffler.GetExCards();
 
             foreach (var str in _useCardsList) {
                 var label = new Label {
                     Text = str,
-                    Location = new Point(20, 5 + 16 * (i + 1)),
+                    Location = new Point(20, 4 + 16 * (i + 1)),
                     Size = new Size(200, 16)
                 };
                 ++i;
 
                 _gbCards.Controls.Add(label);
+            }
+
+            foreach (var  str in _useExCardsList) {
+                var label = new Label {
+                        Text = str,
+                        Location = new Point(20, 4 + 16 * (i - 10 + 1)),
+                        Size = new Size(200, 16),
+                };
+                ++i;
+
+                _gbExCards.Controls.Add(label);
             }
         }
     }
