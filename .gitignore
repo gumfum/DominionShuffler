@@ -1,3 +1,6 @@
-/DominionShuffler.suo
-DominionShuffler/bin/
-DominionShuffler/obj/
+*.suo
+*.exe
+*.pdb
+*.manifest
+[Bb]in
+[Oo]bj
