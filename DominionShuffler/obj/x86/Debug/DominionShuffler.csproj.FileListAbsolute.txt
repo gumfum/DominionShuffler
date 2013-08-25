@@ -8,3 +8,8 @@ C:\Project\DominionShuffler\DominionShuffler\obj\x86\Debug\DominionShuffler.pdb
 C:\Project\DominionShuffler\DominionShuffler\bin\Debug\DominionShuffler.exe
 C:\Project\DominionShuffler\DominionShuffler\bin\Debug\DominionShuffler.pdb
 C:\Project\DominionShuffler\DominionShuffler\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Projects\DominionShuffler\DominionShuffler\obj\x86\Debug\DominionShuffler.exe
+C:\Projects\DominionShuffler\DominionShuffler\obj\x86\Debug\DominionShuffler.pdb
+C:\Projects\DominionShuffler\DominionShuffler\bin\Debug\DominionShuffler.exe
+C:\Projects\DominionShuffler\DominionShuffler\bin\Debug\DominionShuffler.pdb
+C:\Projects\DominionShuffler\DominionShuffler\obj\x86\Debug\DominionShuffler.csprojResolveAssemblyReference.cache

@@ -2,7 +2,7 @@
 
 namespace DominionShuffler {
     enum VersionName {
-        Bas, Int, Sea, Pro, Har, For, Alc, Bla
+        Bas, Int, Sea, Pro, Har, For, Alc, Bla, Gui,
     }
 
     class Card {
@@ -42,6 +42,8 @@ namespace DominionShuffler {
                     return "錬金";
                 case VersionName.Bla:
                     return "暗黒";
+                case VersionName.Gui:
+                    return "ギルド";
                 default:
                     return "おっと、プログラムのミスだね^^";
             }

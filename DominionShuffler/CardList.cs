@@ -230,6 +230,22 @@ namespace DominionShuffler {
             _list.Add(new Card(187, 5, false, "略奪", VersionName.Bla));
         }
 
+        public void AddGuildCards() {
+            _list.Add(new Card(188, 2, false, "石工", VersionName.Gui));
+            _list.Add(new Card(189, 3, false, "医者", VersionName.Gui));
+            _list.Add(new Card(190, 5, false, "熟練工", VersionName.Gui));
+            _list.Add(new Card(191, 5, false, "商人ギルド", VersionName.Gui));
+            _list.Add(new Card(192, 4, false, "助言者", VersionName.Gui));
+            _list.Add(new Card(193, 4, false, "収税吏", VersionName.Gui));
+            _list.Add(new Card(194, 4, false, "伝令官", VersionName.Gui));
+            _list.Add(new Card(195, 5, false, "肉屋", VersionName.Gui));
+            _list.Add(new Card(196, 5, false, "パン屋", VersionName.Gui));
+            _list.Add(new Card(197, 4, false, "広場", VersionName.Gui));
+            _list.Add(new Card(198, 3, false, "名品", VersionName.Gui));
+            _list.Add(new Card(199, 5, false, "預言者", VersionName.Gui));
+            _list.Add(new Card(200, 2, false, "蝋燭職人", VersionName.Gui));
+        }
+
         public Card GetCard(int num) {
             return _list[num];
         }

@@ -23,6 +23,7 @@ namespace DominionShuffler {
         readonly CheckBox _cbFor;
         readonly CheckBox _cbArc;
         readonly CheckBox _cbBla;
+        readonly CheckBox _cbGui;
 
         readonly CheckBox _cbPlatinum;
 
@@ -105,6 +106,11 @@ namespace DominionShuffler {
                 Location = new Point(20, 155),
             };
 
+            _cbGui = new CheckBox {
+                Text = "ギルド",
+                Location = new Point(20, 175),
+            };
+
             _cbPlatinum = new CheckBox {
                 Text = "使用しない",
                 Location = new Point(20, 20),
@@ -118,6 +124,7 @@ namespace DominionShuffler {
             _gbSets.Controls.Add(_cbFor);
             _gbSets.Controls.Add(_cbArc);
             _gbSets.Controls.Add(_cbBla);
+            _gbSets.Controls.Add(_cbGui);
 
             _gbOptions.Controls.Add(_cbPlatinum);
 
@@ -140,7 +147,7 @@ namespace DominionShuffler {
             _gbCards.Controls.Clear();
             _gbExCards.Controls.Clear();
             
-            var isSelectedSet = new bool[8];
+            var isSelectedSet = new bool[9];
 
             isSelectedSet[0] = _cbBas.Checked;
             isSelectedSet[1] = _cbInt.Checked;
@@ -150,6 +157,7 @@ namespace DominionShuffler {
             isSelectedSet[5] = _cbFor.Checked;
             isSelectedSet[6] = _cbArc.Checked;
             isSelectedSet[7] = _cbBla.Checked;
+            isSelectedSet[8] = _cbGui.Checked;
 
             _useCardsList = _shuffler.GetCards(isSelectedSet);
             _useExCardsList = _shuffler.GetExCards();

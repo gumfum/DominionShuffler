@@ -53,6 +53,8 @@ namespace DominionShuffler {
                 _cardList.AddArchemyCards();
             if (b[7])
                 _cardList.AddBrackageCards();
+            if (b[8])
+                _cardList.AddGuildCards();
 
             if (_cardList.Length == 0) {
                 _useCards.Add("セットを選んでね!!!");
@@ -88,6 +90,10 @@ namespace DominionShuffler {
         }
 
         public List<string> GetExCards() {
+            if (_cardList.Length == 0) {
+                return _useExCards;
+            }
+
             if(_isProsperityEnvironment) {
                 SetProsperityEnvironment();
             }
